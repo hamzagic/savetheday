@@ -17,7 +17,7 @@ module.exports = {
     },
     //to be displayed in the app only
     async index(req, res) {
-        const ongs = await connection.select('name', 'email', 'whatsapp', 'city', 'uf').from('ongs');
+        const ongs = await connection.select('id','name', 'email', 'whatsapp', 'city', 'uf').from('ongs');
         return res.json({'data': ongs});
     },
 

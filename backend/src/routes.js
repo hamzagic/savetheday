@@ -40,12 +40,38 @@ routes.get('/ong', celebrate({
     }).unknown()
 }), OngController.getOng);
 
-routes.post('/cases', CaseController.create);
+routes.post('/cases', celebrate({
+    [Segments.HEADERS]: Joi.object({
+        authorization: Joi.string().required()
+    }).unknown(),
+    [Segments.BODY]: Joi.object().keys({
+        title: Joi.string().required(),
+        description: Joi.string().required(),
+        value: Joi.number().required()
+    })
+}), CaseController.create);
 
 routes.get('/cases', CaseController.index);
 
-routes.get('/cases-ongs', CaseController.listCasesByOng);
+routes.get('/cases-ongs', celebrate({
+    [Segments.HEADERS]: Joi.object({
+        authorization: Joi.string().required()
+    }).unknown()
+}), CaseController.listCasesByOng);
 
-routes.get('/case/:id', CaseController.getCase);
+routes.get('/case/:id', celebrate({
+    [Segments.PARAMS]: Joi.object().keys({
+        id: Joi.number().required()
+    })
+}), CaseController.getCase);
+
+routes.delete('/cases/:id', celebrate({
+    [Segments.HEADERS]: Joi.object({
+        authorization: Joi.string().required()
+    }).unknown(),
+    [Segments.PARAMS]: Joi.object().keys({
+        id: Joi.number().required()
+    })
+}), CaseController.delete);
 
 module.exports = routes;

@@ -21,7 +21,7 @@ module.exports = {
     async index(req, res) {
         const cases = await connection('cases')
         .join('ongs', {'ongs.id': 'ong_id'})
-        .select('name', 'email', 'whatsapp', 'city', 'uf', 'title', 'description', 'value');
+        .select('cases.id','name', 'email', 'whatsapp', 'city', 'uf', 'title', 'description', 'value');
         return res.json(cases);
     },
 
@@ -56,5 +56,30 @@ module.exports = {
         .first()
         
         return res.json(ong);
+    },
+    async delete(req, res) {
+        const ong_id = req.headers.authorization;
+        const { id } = req.params;
+        if(!ong_id) {
+            return res.json({'message': 'Invalid identification'});
+        } else {
+            const cases = await connection('cases')
+            .where('id', id)
+            .select('ong_id', 'id')
+            .first();
+            if(cases) {
+               // return res.json({'message': cases.ong_id});
+                if(cases.ong_id != ong_id) {
+                    return res.status(401).json({error: 'Not authorized'});
+                } else {
+                    await connection('cases')
+                    .where('id', cases.id)
+                    .delete();
+                    return res.status(204).send();
+                }
+            } else {
+                return res.json({'message': 'Case not found'});
+            }
+        }
     }
 }
