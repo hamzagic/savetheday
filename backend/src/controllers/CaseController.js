@@ -57,6 +57,7 @@ module.exports = {
         
         return res.json(ong);
     },
+    // todo: soft delete of cases
     async delete(req, res) {
         const ong_id = req.headers.authorization;
         const { id } = req.params;
