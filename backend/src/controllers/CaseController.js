@@ -12,7 +12,7 @@ module.exports = {
                 value,
                 ong_id: ong.id
             });
-            return res.json({ 'id': id, 'ong_od': ong_id });
+            return res.json({ 'id': id, 'ong_id': ong_id });
         } else {
             return res.json({'message': 'No ONGs found'});
         }
@@ -22,47 +22,50 @@ module.exports = {
         const cases = await connection('cases')
         .join('ongs', {'ongs.id': 'ong_id'})
         .select('cases.id','name', 'email', 'whatsapp', 'city', 'uf', 'title', 'description', 'value');
-        return res.json(cases);
+        return res.json({'data': cases});
     },
 
     async listCasesByOng(req, res) {
         const ong_id = req.headers.authorization;
         if(!ong_id) {
-            return res.json({'message': 'ONG key not sent'});
+            return res.json({'error': 'ONG key not sent'});
         } else {
             const [id] = await connection('ongs')
             .select('id')
             .where('id', ong_id);
             if(!id) {
-                return res.json({'message': 'No ONGs found'});
+                return res.json({'error': 'No ONGs found'});
             } else {
                 const cases = await connection('cases')
                 .join('ongs', 'ongs.id', '=', 'ong_id')
                 .where('ong_id', ong_id)
                 .select('title', 'description', 'value', 'name', 'email', 'whatsapp', 'city', 'uf');
-                return res.json(cases);
+                return res.json({'data': cases});
             }
         }
     },
     async getCase(req, res) {
         const { id } = req.params;
         if(!id) {
-            return res.json({'message': 'Invalid param'});
+            return res.json({'error': 'Invalid param'});
         }
         const ong = await connection('cases')
         .join('ongs', 'ongs.id', '=', 'cases.ong_id')
         .where('cases.id', id)
         .select('cases.id', 'title', 'description', 'value', 'name', 'email', 'whatsapp', 'city', 'uf')
         .first()
-        
-        return res.json(ong);
+        if(ong) {
+            return res.json({'data': ong});
+        } else {
+            return res.json({'error': 'No cases found'});
+        }
     },
     // todo: soft delete of cases
     async delete(req, res) {
         const ong_id = req.headers.authorization;
         const { id } = req.params;
         if(!ong_id) {
-            return res.json({'message': 'Invalid identification'});
+            return res.json({'error': 'Invalid identification'});
         } else {
             const cases = await connection('cases')
             .where('id', id)
@@ -79,7 +82,7 @@ module.exports = {
                     return res.status(204).send();
                 }
             } else {
-                return res.json({'message': 'Case not found'});
+                return res.json({'error': 'Case not found'});
             }
         }
     }

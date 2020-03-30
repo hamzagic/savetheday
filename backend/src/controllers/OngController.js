@@ -29,7 +29,7 @@ module.exports = {
         .select('id') 
         .first(); 
         if(!ong) {
-            return res.json({'message': 'No ONGs found'});
+            return res.json({'error': 'No ONGs found'});
         } else {
             await connection('ongs')
             .where('id', ong.id)
@@ -51,7 +51,7 @@ module.exports = {
         .select('name', 'email', 'whatsapp', 'city', 'uf')
         .first();
         if(!ong) {
-            return res.json({'message': 'No ONGs found'}); 
+            return res.json({'error': 'No ONGs found'}); 
         } else {
             return res.json({ 'data': ong });
         }
