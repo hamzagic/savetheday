@@ -13,6 +13,7 @@ export default function Register() {
     const [whatsapp, setWhatsapp] = useState('');
     const [city, setCity] = useState('');
     const [state, setState] = useState('');
+    const [password, setPassword] = useState('');
 
     const history = useHistory();
 
@@ -23,7 +24,8 @@ export default function Register() {
             email,
             whatsapp,
             city,
-            state
+            state,
+            password
         }
         console.log('Signup clicked', data);
     }
@@ -38,7 +40,7 @@ export default function Register() {
                     <p>Create a new account and be visible so that people can help your shelter.</p>
                     <Link to="/login" className="back-link">
                         <FiArrowLeft size={16} color="#ff0054" />
-                        Back to Login
+                        Already have an account?
                     </Link>
                 </section>
                 <form onSubmit={handleRegister}>
@@ -76,6 +78,12 @@ export default function Register() {
                             onChange={e => setState(e.target.value)} 
                         />
                     </div>
+                    <input 
+                        type="password" 
+                        placeholder="Choose password" 
+                        value={password} 
+                        onChange={e => setPassword(e.target.value)} 
+                    />
                     <button type="submit" className="button">Register</button>
                 </form>
             </div>
