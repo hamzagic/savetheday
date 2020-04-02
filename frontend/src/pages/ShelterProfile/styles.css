@@ -1,0 +1,45 @@
+.profile-container {
+    width: 100%;
+    max-width: 1200px;
+    height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-container .content {
+    width: 100%;
+    padding: 96px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.profile-container .content section {
+    width: 100%;
+    max-width: 380px;
+}
+
+.profile-container .content form h1 {
+    font-size: 32px;
+    margin: 20px 0 20px;
+    color: #747474;
+    text-align: center;
+}
+
+.profile-container .content form {
+    width: 100%;
+    max-width: 550px;
+}
+
+.profile-container .content form input {
+    margin-top: 8px;
+}
+
+.profile-container .content section p {
+    font-size: 16px;
+    color: #737382;
+    line-height: 30px;
+}

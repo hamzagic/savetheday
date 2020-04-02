@@ -33,7 +33,7 @@
     margin-left: auto;
 }
 
-.cases-container .newCase {
+.cases-container .newCaseBtn {
   height: 50px;
   border: 0;
   border-radius: 8px;
@@ -46,7 +46,7 @@
   transition: filter 0.2s;
 }
 
-.cases-container .newCase:hover {
+.cases-container .newCaseBtn:hover {
     filter: brightness(90%); 
   }
 
@@ -64,7 +64,8 @@
 }
 
 .cases-container ul li {
-    background-color: rgba(234, 196, 84, 0.1);
+    background-color: rgba(234, 196, 0, 0.1);
+    border: 1px solid #ddd;
     padding: 24px;
     border-radius: 8px;
     position: relative;

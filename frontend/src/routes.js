@@ -5,6 +5,7 @@ import Register from './pages/Register/index';
 import Login from './pages/Login';
 import NewCase from './pages/NewCase';
 import Cases from './pages/Cases';
+import ShelterProfile from './pages/ShelterProfile';
 
 export default function Routes() {
     return(
@@ -14,6 +15,7 @@ export default function Routes() {
                 <Route path="/register" component={Register} />
                 <Route path="/case" component={NewCase} />
                 <Route path="/cases" component={Cases} />
+                <Route path="/profile" component={ShelterProfile} />
             </Switch>
         </BrowserRouter>
     );

@@ -1,18 +1,31 @@
 import React from 'react';
 import myText from '../../assets/lineartext.png';
 import { FiPower, FiUser, FiTrash2 } from 'react-icons/fi';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import './styles.css';
 
 export default function Cases() {
+    const history = useHistory();
+    function goToNewCase() {
+        history.push('/case');
+    }
+    function goToProfile() {
+        history.push('/profile');
+    }
     return(
         <div className="cases-container">
             <header>
                 <img src={myText} style={{height: "100px"}} alt="saveIt"/>
                 <span>Welcome, Shelter</span>
-                <button className="left newCase" style={{maxWidth: "200px", letterSpacing: "0em", marginTop: "-2px"}}>Create New Case</button>
-                <button className="profile-btn">
+                <button 
+                    className="left newCaseBtn" 
+                    style={{maxWidth: "200px", letterSpacing: "0em", marginTop: "-2px"}}
+                    onClick={goToNewCase}
+                >
+                    Create New Case
+                </button>
+                <button className="profile-btn" onClick={goToProfile}>
                     <FiUser size={15} style={{marginRight: "8px"}} />
                     Profile
                 </button>
