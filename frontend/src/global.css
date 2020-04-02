@@ -59,6 +59,24 @@ form textarea {
   filter: brightness(90%); 
 }
 
+.profile-btn {
+  height: 50px;
+  border: 0;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 120px;
+  background-color: #0d45b5;
+  opacity: 0.9;
+  color: #fff;
+  font-size: 16px;
+  /* margin-top: 10px; */
+  transition: filter 0.2s;
+}
+
+.profile-btn:hover {
+  filter: brightness(90%); 
+}
+
 .back-link {
   display: flex;
   align-items: center;
