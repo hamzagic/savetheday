@@ -21,10 +21,11 @@
     max-width: 380px;
 }
 
-.register-container .page-content section h1 {
+.register-container .page-content form h1 {
     font-size: 32px;
     margin: 20px 0 20px;
     color: #747474;
+    text-align: center;
 }
 
 .register-container .page-content section p {

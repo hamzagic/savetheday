@@ -10,6 +10,8 @@ export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const history = useHistory();
+
     function handleLogin(e) {
         e.preventDefault();
         const data = {
@@ -17,6 +19,7 @@ export default function Login() {
             password
         }
         console.log('login clicked', data);
+        history.push('/cases');
     }
     return(
         <div className="login-container">

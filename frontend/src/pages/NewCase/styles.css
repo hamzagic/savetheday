@@ -1,0 +1,46 @@
+.new-case-container {
+    width: 100%;
+    max-width: 1200px;
+    height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.new-case-container .content {
+    width: 100%;
+    padding: 66px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.new-case-container .content section {
+    width: 100%;
+    max-width: 380px;
+}
+
+.new-case-container .content form {
+    width: 100%;
+    max-width: 500px;
+}
+
+.new-case-container .content form input,
+.new-case-container .content form textarea {
+    margin-top: 8px;
+}
+
+.new-case-container .content section h1 {
+    font-size: 30px;
+    margin: 40px 0 20px;
+    text-align: center;
+    color: #747480; 
+}
+
+.new-case-container .content section p {
+    font-size: 16px;
+    color: #737382;
+    line-height: 30px;
+    text-align: center;
+}

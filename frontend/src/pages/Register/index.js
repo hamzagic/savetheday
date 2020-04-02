@@ -36,7 +36,6 @@ export default function Register() {
                 <section>
                     <img src={myText} alt="save" />
                     <img src={myImg} alt="hero" style={{height: "200px", color:"#ff0054"}}/>
-                    <h1>Register</h1>
                     <p>Create a new account and be visible so that people can help your shelter.</p>
                     <Link to="/login" className="back-link">
                         <FiArrowLeft size={16} color="#ff0054" />
@@ -44,6 +43,7 @@ export default function Register() {
                     </Link>
                 </section>
                 <form onSubmit={handleRegister}>
+                <h1>Create Account</h1>
                     <input 
                         type="text" 
                         placeholder="Name" 
